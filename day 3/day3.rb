@@ -22,7 +22,7 @@
 p$<.read.scan(/mul\((\d+),(\d+)\)/).sum{eval(_1*?*)}
 
 # `p` does not need a space
-# `$<.read` reads from a file
+# `$<.read` reads from a ARGV[0]
 # `_1` is first arg for `sum`
 # `*?*` joins an array w/ the `*` char
 # `eval` evaluates the whole string
