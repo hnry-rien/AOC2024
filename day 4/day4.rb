@@ -8,10 +8,9 @@ hs = lines
 vs = lines.map { |l| l.split("") }.transpose.map(&:join)
 
 rows = lines.size - 1
-cols = lines.first.size - 1
 
 # top left bottom right diagonals
-def tl_br(lines, rows, cols)
+def tl_br(lines, rows)
   tl_br = []
   (0..rows).each do |r|
     str = []
@@ -23,13 +22,13 @@ def tl_br(lines, rows, cols)
   tl_br
 end
 
-tl_br1 = tl_br(lines, rows, cols)
-tl_br2 = tl_br(lines.reverse.map(&:reverse), rows, cols)
+tl_br1 = tl_br(lines, rows)
+tl_br2 = tl_br(lines.reverse.map(&:reverse), rows)
 tl_br2.pop # last one is a double from tl_br1
 
 # top right bottom left diagonals
 
-def tr_bl(lines, rows, cols)
+def tr_bl(lines, rows)
   tr_bl = []
   (0..rows).each do |r|
     str = []
@@ -41,8 +40,8 @@ def tr_bl(lines, rows, cols)
   tr_bl
 end
 
-tr_bl1 = tr_bl(lines.map(&:reverse), rows, cols)
-tr_bl2 = tr_bl(lines.map(&:reverse).reverse.map(&:reverse), rows, cols)
+tr_bl1 = tr_bl(lines.map(&:reverse), rows)
+tr_bl2 = tr_bl(lines.map(&:reverse).reverse.map(&:reverse), rows)
 tr_bl2.pop # last one is a double from tr_bl2
 
 # --------
